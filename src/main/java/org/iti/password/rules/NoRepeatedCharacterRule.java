@@ -6,19 +6,24 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Valida se uma senha não contém caracteres repetidos.
+ * Regra que valida se uma senha não contém caracteres repetidos.
  *
- * Regras aplicadas:
- * - Retorna false se a senha for null.
- * - Considera caracteres repetidos de forma case-insensitive: 'a' e 'A' são tratados como iguais.
- * - Compare caracteres individuais
- *
- * @param password a senha a ser validada
- * @return true se não houver caracteres repetidos (ignorando diferença entre maiúsculas/minúsculas); false caso contrário
+ * Observações: a validação atual é case-insensitive ("a" e "A" são tratados como iguais).
  */
 
 @Component
 public class NoRepeatedCharacterRule implements PasswordRule {
+    /**
+     * Verifica se a senha não contém caracteres repetidos.
+     *
+     * Comportamento:
+     * - Retorna false se a senha for null.
+     * - Considera caracteres repetidos de forma case-insensitive: 'a' e 'A' são tratados como iguais.
+     * - Compara caracteres individuais (não faz folding Unicode avançado).
+     *
+     * @param password a senha a ser validada
+     * @return true se não houver caracteres repetidos (ignorando diferença entre maiúsculas/minúsculas); false caso contrário
+     */
     public boolean isValid(String password) {
         if (password == null) return false;
 
