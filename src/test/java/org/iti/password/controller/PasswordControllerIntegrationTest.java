@@ -1,4 +1,3 @@
-// language: java
 package org.iti.password.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
