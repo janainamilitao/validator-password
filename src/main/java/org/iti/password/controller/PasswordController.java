@@ -23,9 +23,4 @@ public class PasswordController {
         boolean valid = service.validate(request.password());
         return new PasswordResponse(valid);
     }
-
-    @GetMapping
-    public String health() {
-        return "OK";
-    }
 }
