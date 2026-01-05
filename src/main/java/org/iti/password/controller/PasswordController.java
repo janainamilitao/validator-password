@@ -20,7 +20,6 @@ public class PasswordController {
 
     @PostMapping("/validate")
     public PasswordResponse validate(@RequestBody PasswordRequest request) {
-        boolean valid = service.validate(request.password());
-        return new PasswordResponse(valid);
+        return service.validate(request.password());
     }
 }

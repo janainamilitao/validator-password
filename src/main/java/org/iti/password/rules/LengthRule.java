@@ -16,4 +16,9 @@ public class LengthRule implements PasswordRule {
     public boolean isValid(String password) {
         return password != null && password.length() >= 9;
     }
+
+    @Override
+    public String errorMessage() {
+        return "Senha deve conter pelo menos 9 caracteres.";
+    }
 }

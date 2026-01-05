@@ -21,6 +21,7 @@ public class CharacterCompositionRule implements PasswordRule {
 
 
     public boolean isValid(String password) {
+        if (password == null) return false;
         boolean digit = false, lower = false, upper = false, special = false;
 
 
@@ -34,5 +35,10 @@ public class CharacterCompositionRule implements PasswordRule {
 
 
         return digit && lower && upper && special;
+    }
+
+    @Override
+    public String errorMessage() {
+        return "Senha deve conter ao menos 1 dígito, 1 minúscula, 1 maiúscula, 1 caractere especial e não pode ter espaços.";
     }
 }

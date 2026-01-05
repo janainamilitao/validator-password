@@ -35,4 +35,9 @@ public class NoRepeatedCharacterRule implements PasswordRule {
         }
         return true;
     }
+
+    @Override
+    public String errorMessage() {
+        return "Senha não pode conter caracteres repetidos (case-insensitive).";
+    }
 }

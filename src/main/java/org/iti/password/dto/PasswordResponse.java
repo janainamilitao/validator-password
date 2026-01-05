@@ -1,4 +1,6 @@
 package org.iti.password.dto;
 
-public record PasswordResponse(boolean valid) {
+import java.util.List;
+
+public record PasswordResponse(boolean valid, List<String> failures) {
 }
