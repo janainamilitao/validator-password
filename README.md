@@ -311,3 +311,21 @@ mvn -DskipTests=false test
 - Se preferir usar códigos semânticos HTTP: retornar 400/Bad Request para payloads inválidos (por exemplo, corpo ausente ou tipo errado) e manter 200 para uma verificação realizada com sucesso (mesmo que `valid:false`). Nunca usar 5xx para validação normal.
 
 ---
+
+Testar endpoint com curl:
+
+```bash
+# Exemplo: senha válida (retorna valid=true)
+curl -s -X POST http://localhost:8080/api/password/validate \
+  -H "Content-Type: application/json" \
+  -d '{"password":"AbTp9!fok"}'
+# Resposta esperada (JSON):
+# {"valid":true,"failures":[]}
+
+# Exemplo: senha inválida (retorna valid=false e mensagens de falha)
+curl -s -X POST http://localhost:8080/api/password/validate \
+  -H "Content-Type: application/json" \
+  -d '{"password":"AbTp9!fo"}'
+# Resposta esperada (JSON):
+# {"valid":false,"failures":["Senha deve conter pelo menos 9 caracteres."]}
+```
